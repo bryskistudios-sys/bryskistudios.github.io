@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bryski Studios — Social Media & Video Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#0D0D0D;--white:#fff;--gray:#F5F5F5;--gray2:#EFEFEF;--border:#E8E8E8;--muted:#999;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:#fff;color:#0D0D0D;overflow-x:hidden;text-transform:uppercase;}
+
+/* ── SCROLL REVEAL ─────────────────── */
+.sr{opacity:0;transform:translateY(20px);transition:opacity 1s ease,transform 1s ease;will-change:opacity,transform;}
+.sr.d1{transition-delay:.12s;}.sr.d2{transition-delay:.22s;}.sr.d3{transition-delay:.32s;}.sr.d4{transition-delay:.42s;}.sr.d5{transition-delay:.52s;}
+.sr.visible{opacity:1;transform:none;}
+.sr-left{opacity:0;transform:translateX(-20px);transition:opacity 1s ease,transform 1s ease;will-change:opacity,transform;}
+.sr-left.visible{opacity:1;transform:none;}
+.sr-right{opacity:0;transform:translateX(20px);transition:opacity 1s ease,transform 1s ease;will-change:opacity,transform;}
+.sr-right.visible{opacity:1;transform:none;}
+.sr-scale{opacity:0;transform:scale(0.97);transition:opacity .9s ease,transform .9s ease;will-change:opacity,transform;}
+.sr-scale.visible{opacity:1;transform:none;}
+
+/* ── NAV ─────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:62px;background:#fff;border-bottom:1px solid var(--border);}
+.nav-logo{font-size:13px;font-weight:900;letter-spacing:3px;color:var(--black);cursor:pointer;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{font-size:8px;font-weight:800;letter-spacing:2.5px;color:var(--muted);cursor:pointer;transition:color .2s;text-decoration:none;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--black);transition:width .3s cubic-bezier(.16,1,.3,1);}
+.nav-links a:hover::after,.nav-links a.on::after{width:100%;}
+.nav-links a:hover,.nav-links a.on{color:var(--black);}
+.nav-portal{font-size:8px;font-weight:900;letter-spacing:2px;color:#fff;background:var(--black);border:none;padding:10px 22px;cursor:pointer;font-family:'Montserrat',sans-serif;text-transform:uppercase;transition:opacity .2s;}
+.nav-portal:hover{opacity:.8;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+.burger span{display:block;width:22px;height:2px;background:var(--black);}
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;position:fixed;top:62px;left:0;right:0;background:#fff;flex-direction:column;align-items:flex-start;padding:24px 20px;border-bottom:1px solid var(--border);gap:20px;}
+  .nav-links.open{display:flex;}
+  .burger{display:flex;}
+}
+
+/* ── PAGE SYSTEM ─────────────────────── */
+.page{display:none;padding-top:62px;}
+.page.on{display:block;animation:pageIn .4s ease both;}
+@keyframes pageIn{from{opacity:0;}to{opacity:1;}}
+
+/* ── BUTTONS ─────────────────────────── */
+.btn-blk{display:inline-block;padding:15px 36px;background:var(--black);color:#fff;border:none;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:opacity .25s;text-decoration:none;}
+.btn-blk:hover{opacity:.75;}
+.btn-wht{display:inline-block;padding:15px 36px;background:#fff;color:var(--black);border:2px solid var(--black);font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;}
+.btn-wht:hover{background:var(--black);color:#fff;}
+
+/* ── HOME ────────────────────────────── */
+.hero{
+  min-height:calc(100vh - 62px);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:80px 48px 120px;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.hero-tag{
+  font-size:8px;letter-spacing:5px;color:var(--muted);font-weight:800;margin-bottom:28px;
+  animation:heroUp 1s .1s ease both;
+}
+.hero-h1{
+  font-size:clamp(52px,9vw,128px);font-weight:900;letter-spacing:-1px;
+  line-height:.95;color:var(--black);margin-bottom:24px;white-space:nowrap;
+  animation:heroUp 1.1s .2s ease both;
+}
+.hero-h2{
+  font-size:clamp(12px,1.6vw,18px);font-weight:800;letter-spacing:2px;
+  color:var(--black);margin-bottom:16px;
+  animation:heroUp 1.1s .35s ease both;
+}
+.hero-p{
+  font-size:9px;letter-spacing:2px;color:var(--muted);max-width:440px;
+  line-height:2.2;font-weight:600;margin-bottom:44px;
+  animation:heroUp 1.1s .48s ease both;
+}
+.hero-btns{
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  animation:heroUp 1.1s .6s ease both;
+}
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  font-size:7px;letter-spacing:3px;color:var(--muted);font-weight:700;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  animation:heroUp 1s .8s ease both;
+}
+.scroll-line{
+  width:1px;height:40px;background:var(--border);
+  animation:scrollPulse 2s ease-in-out infinite;
+  transform-origin:top;
+}
+@keyframes heroUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+@keyframes scrollPulse{0%,100%{opacity:.6;}50%{opacity:.15;}}
+@media(max-width:768px){
+  .hero{padding:60px 24px 100px;}
+  .hero-h1{white-space:normal;font-size:clamp(40px,14vw,80px);}
+}
+
+/* MARQUEE */
+.marquee-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;overflow:hidden;white-space:nowrap;background:#fff;}
+.marquee-inner{display:inline-block;animation:marquee 20s linear infinite;}
+.marquee-bar:hover .marquee-inner{animation-play-state:paused;}
+.mi{display:inline-block;font-size:9px;font-weight:800;letter-spacing:4px;color:var(--muted);margin:0 36px;}
+.md{display:inline-block;width:4px;height:4px;background:var(--black);border-radius:50%;vertical-align:middle;margin:0 16px;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* DONE FOR YOU */
+.dfy{display:grid;grid-template-columns:1fr 1fr;min-height:500px;}
+.dfy-left{background:var(--black);padding:80px 56px;display:flex;flex-direction:column;justify-content:center;}
+.dfy-right{background:var(--gray);padding:80px 56px;display:flex;flex-direction:column;justify-content:center;}
+.dfy-tag{font-size:8px;letter-spacing:4px;color:rgba(255,255,255,.4);margin-bottom:16px;font-weight:700;}
+.dfy-h{font-size:clamp(24px,3.5vw,40px);font-weight:900;letter-spacing:1px;line-height:1.1;color:#fff;margin-bottom:20px;}
+.dfy-p{font-size:9px;letter-spacing:1.5px;line-height:2.4;color:rgba(255,255,255,.6);font-weight:600;margin-bottom:36px;}
+.dfy-steps{display:flex;flex-direction:column;gap:16px;}
+.dfy-step{display:flex;align-items:flex-start;gap:16px;transition:transform .3s cubic-bezier(.16,1,.3,1);}
+.dfy-step:hover{transform:translateX(8px);}
+.dfy-step-num{font-size:9px;font-weight:900;letter-spacing:2px;color:rgba(255,255,255,.3);min-width:28px;padding-top:1px;}
+.dfy-step-text{font-size:9px;letter-spacing:1.5px;line-height:2;color:rgba(255,255,255,.75);font-weight:700;}
+.dfy-r-tag{font-size:8px;letter-spacing:4px;color:var(--muted);margin-bottom:16px;font-weight:700;}
+.dfy-r-h{font-size:clamp(24px,3.5vw,40px);font-weight:900;letter-spacing:1px;line-height:1.1;color:var(--black);margin-bottom:20px;}
+.dfy-r-p{font-size:9px;letter-spacing:1.5px;line-height:2.4;color:var(--muted);font-weight:600;margin-bottom:36px;}
+.dfy-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;}
+.dfy-stat{border:1px solid var(--border);padding:20px;transition:border-color .2s,transform .3s cubic-bezier(.16,1,.3,1);}
+.dfy-stat:hover{border-color:var(--black);transform:translateY(-3px);}
+.dfy-stat-n{font-size:28px;font-weight:900;letter-spacing:1px;color:var(--black);}
+.dfy-stat-l{font-size:8px;letter-spacing:2px;color:var(--muted);margin-top:4px;font-weight:700;}
+@media(max-width:768px){.dfy{grid-template-columns:1fr;}.dfy-left,.dfy-right{padding:56px 28px;}}
+
+/* CTA STRIP */
+.cta-strip{background:var(--black);padding:80px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.cta-strip-h{font-size:clamp(24px,4vw,48px);font-weight:900;letter-spacing:1px;line-height:1;color:#fff;}
+.cta-strip-sub{font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);margin-top:10px;font-weight:600;}
+
+/* ── ABOUT ───────────────────────────── */
+.about-hero{padding:100px 48px 72px;border-bottom:1px solid var(--border);}
+.about-hero-inner{max-width:860px;}
+.about-eyebrow{font-size:8px;letter-spacing:5px;color:var(--muted);font-weight:800;margin-bottom:16px;}
+.about-h{font-size:clamp(40px,8vw,86px);font-weight:900;letter-spacing:2px;line-height:.95;margin-bottom:36px;}
+.about-lead{font-size:11px;letter-spacing:1.5px;line-height:2.4;color:var(--muted);font-weight:600;max-width:640px;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.about-l{padding:72px 48px;border-right:1px solid var(--border);}
+.about-r{padding:72px 48px;}
+.about-body{font-size:9px;letter-spacing:1.5px;line-height:2.6;color:var(--muted);font-weight:600;margin-bottom:32px;}
+.about-vals{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
+.about-val{background:#fff;padding:28px;font-size:9px;transition:background .2s,transform .3s cubic-bezier(.16,1,.3,1);}
+.about-val:hover{background:var(--gray);transform:translateY(-2px);}
+.about-val-t{font-weight:900;letter-spacing:2px;margin-bottom:8px;color:var(--black);}
+.about-val-p{color:var(--muted);line-height:2;letter-spacing:1px;font-weight:600;}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;}.about-l{border-right:none;border-bottom:1px solid var(--border);padding:48px 24px;}.about-r{padding:48px 24px;}.about-hero{padding:60px 24px 48px;}}
+
+/* ── OUR WORK ──────────────────────── */
+.section{padding:88px 48px;}
+.sec-tag{font-size:8px;letter-spacing:4px;color:var(--muted);font-weight:800;margin-bottom:10px;}
+.sec-h{font-size:clamp(32px,5.5vw,60px);font-weight:900;letter-spacing:1px;line-height:1;margin-bottom:52px;}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.work-item{position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--gray);cursor:pointer;}
+.work-item.wide{grid-column:span 2;aspect-ratio:auto;min-height:380px;}
+.work-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.work-item:hover .work-bg{transform:scale(1.06);}
+.work-overlay{position:absolute;inset:0;background:rgba(13,13,13,0);display:flex;flex-direction:column;justify-content:flex-end;padding:28px;transition:background .3s;}
+.work-item:hover .work-overlay{background:rgba(13,13,13,.78);}
+.work-info{opacity:0;transform:translateY(10px);transition:all .35s cubic-bezier(.16,1,.3,1);}
+.work-item:hover .work-info{opacity:1;transform:translateY(0);}
+.work-cat{font-size:7px;letter-spacing:3px;color:rgba(255,255,255,.6);font-weight:800;margin-bottom:6px;}
+.work-title{font-size:14px;font-weight:900;letter-spacing:1px;color:#fff;}
+@media(max-width:768px){.work-grid{grid-template-columns:1fr;}.work-item.wide{grid-column:span 1;min-height:280px;}}
+
+/* ── BOOKING ─────────────────────────── */
+.booking-hero{padding:80px 48px 0;text-align:center;}
+.booking-h{font-size:clamp(36px,7vw,72px);font-weight:900;letter-spacing:2px;line-height:1;margin-bottom:16px;}
+.booking-sub{font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:600;max-width:400px;margin:0 auto 56px;line-height:2;}
+.booking-options{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3px;}
+.booking-card{background:var(--gray);padding:40px 32px;cursor:pointer;transition:background .2s,transform .3s cubic-bezier(.16,1,.3,1);border:2px solid transparent;}
+.booking-card:hover{background:var(--gray2);transform:translateY(-4px);}
+.booking-card.selected{background:#fff;border-color:var(--black);}
+.booking-plan{font-size:8px;letter-spacing:3px;color:var(--muted);font-weight:800;margin-bottom:12px;}
+.booking-name{font-size:18px;font-weight:900;letter-spacing:1px;margin-bottom:8px;}
+.booking-price{font-size:28px;font-weight:900;color:var(--black);margin-bottom:4px;}
+.booking-price-sub{font-size:8px;letter-spacing:1.5px;color:var(--muted);font-weight:700;margin-bottom:20px;}
+.booking-features{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.booking-features li{font-size:8px;letter-spacing:1.5px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:10px;}
+.booking-features li::before{content:'';width:5px;height:5px;background:var(--black);border-radius:50%;flex-shrink:0;}
+.booking-form-wrap{padding:56px 48px;}
+.booking-form-h{font-size:20px;font-weight:900;letter-spacing:2px;margin-bottom:32px;}
+.bform{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.bform-full{grid-column:span 2;}
+.field-label{font-size:8px;letter-spacing:3px;color:var(--muted);font-weight:700;margin-bottom:8px;display:block;}
+.field-input{width:100%;padding:14px 16px;background:var(--gray);border:1px solid var(--border);font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--black);outline:none;transition:border .2s,box-shadow .2s;}
+.field-input:focus{border-color:var(--black);box-shadow:0 0 0 3px rgba(13,13,13,.06);}
+.field-input::placeholder{color:#ccc;}
+textarea.field-input{resize:vertical;min-height:100px;}
+.bform-submit{width:100%;padding:16px;background:var(--black);color:#fff;border:none;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .15s;margin-top:8px;}
+.bform-submit:hover{opacity:.75;}
+.bform-ok{font-size:9px;letter-spacing:2px;color:var(--black);margin-top:12px;min-height:14px;font-weight:700;}
+@media(max-width:768px){.booking-options{grid-template-columns:1fr;}.bform{grid-template-columns:1fr;}.bform-full{grid-column:span 1;}.booking-form-wrap{padding:40px 24px;}.booking-hero{padding:60px 24px 0;}}
+
+/* ── PORTAL ──────────────────────────── */
+.portal-login{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 62px);padding:60px 20px;background:#fff;}
+.p-brand{font-size:clamp(36px,8vw,68px);font-weight:900;letter-spacing:3px;text-align:center;line-height:1;}
+.p-sub{font-size:9px;letter-spacing:5px;color:var(--muted);margin-top:10px;text-align:center;font-weight:700;}
+.p-rule{width:48px;height:3px;background:var(--black);margin:32px auto;}
+.p-box{width:100%;max-width:400px;padding:40px;border:1px solid var(--border);}
+.p-label{font-size:8px;letter-spacing:3px;color:var(--muted);font-weight:700;margin-bottom:10px;display:block;}
+.p-code{width:100%;padding:18px;background:var(--gray);border:1px solid var(--border);font-size:24px;letter-spacing:10px;text-align:center;font-family:'Montserrat',sans-serif;font-weight:900;text-transform:uppercase;color:var(--black);outline:none;transition:border .2s;}
+.p-code:focus{border-color:var(--black);}
+.p-code::placeholder{color:#D8D8D8;font-size:16px;letter-spacing:5px;}
+.p-go{display:block;width:100%;margin-top:14px;padding:17px;background:var(--black);color:#fff;border:none;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.p-go:hover{opacity:.8;}
+.p-err{font-size:9px;letter-spacing:1px;color:#bbb;margin-top:10px;text-align:center;min-height:14px;font-weight:700;}
+.p-dash{display:none;}
+.p-topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:2px solid var(--black);}
+.p-topbar-logo{font-size:13px;font-weight:900;letter-spacing:3px;}
+.p-topbar-r{display:flex;align-items:center;gap:16px;}
+.p-client{font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:700;}
+.p-out{font-size:9px;letter-spacing:2px;color:var(--black);background:#fff;border:1.5px solid var(--black);padding:10px 22px;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:800;text-transform:uppercase;transition:all .2s;}
+.p-out:hover{background:var(--black);color:#fff;}
+.p-tabs{display:flex;border-bottom:1px solid var(--border);padding:0 48px;gap:4px;}
+.ptab{padding:18px 30px;font-size:10px;letter-spacing:3px;font-weight:800;font-family:'Montserrat',sans-serif;text-transform:uppercase;border:none;background:none;cursor:pointer;color:#bbb;border-bottom:3px solid transparent;margin-bottom:-1px;transition:all .2s;white-space:nowrap;}
+.ptab:hover{color:var(--black);}
+.ptab.on{color:var(--black);border-bottom-color:var(--black);}
+.ptab-badge{display:inline-block;background:var(--black);color:#fff;font-size:8px;padding:2px 7px;margin-left:8px;font-weight:900;}
+.ptab-body{display:none;padding:48px;}
+.ptab-body.on{display:block;}
+.ptab-eyebrow{font-size:8px;letter-spacing:4px;color:var(--muted);font-weight:700;margin-bottom:8px;}
+.ptab-title{font-size:26px;font-weight:900;letter-spacing:1px;margin-bottom:36px;line-height:1;}
+.drop-zone{border:2px dashed #D8D8D8;padding:52px 24px;text-align:center;cursor:pointer;position:relative;background:var(--gray);transition:all .2s;}
+.drop-zone:hover{border-color:var(--black);background:var(--gray2);}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.dz-icon{font-size:28px;opacity:.4;display:block;margin-bottom:12px;}
+.dz-main{font-size:10px;letter-spacing:2px;font-weight:800;}
+.dz-sub{font-size:8px;letter-spacing:1.5px;color:var(--muted);margin-top:6px;font-weight:700;}
+.f-list{margin-top:16px;display:flex;flex-direction:column;gap:6px;}
+.f-row{display:flex;align-items:center;gap:12px;background:var(--gray);border:1px solid var(--border);padding:12px 16px;}
+.f-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.fp{background:#ccc;}.fs{background:var(--black);}
+.f-name{flex:1;font-size:9px;letter-spacing:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;}
+.f-size{font-size:9px;color:var(--muted);flex-shrink:0;font-weight:700;}
+.p-btn{display:block;width:100%;margin-top:20px;padding:16px;background:var(--black);color:#fff;border:none;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.p-btn:hover{opacity:.8;}
+.p-btn:disabled{opacity:.35;}
+.p-ok{font-size:9px;letter-spacing:2px;text-align:center;margin-top:12px;min-height:14px;font-weight:700;}
+.d-list{display:flex;flex-direction:column;}
+.d-row{display:flex;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);}
+.d-row:last-child{border-bottom:none;}
+.d-thumb{width:58px;height:42px;background:var(--gray);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.d-info{flex:1;}
+.d-name{font-size:11px;font-weight:800;letter-spacing:2px;}
+.d-meta{font-size:8px;letter-spacing:1px;color:var(--muted);margin-top:4px;font-weight:600;}
+.d-btn{font-size:9px;font-weight:900;letter-spacing:2px;color:var(--black);background:#fff;border:1.5px solid var(--black);padding:11px 22px;cursor:pointer;font-family:'Montserrat',sans-serif;text-transform:uppercase;white-space:nowrap;transition:all .2s;}
+.d-btn:hover{background:var(--black);color:#fff;}
+.msg-wrap{border:1px solid var(--border);overflow:hidden;}
+.msg-thread{display:flex;flex-direction:column;gap:16px;padding:24px;max-height:320px;overflow-y:auto;background:var(--gray);}
+.mb{display:flex;flex-direction:column;max-width:75%;}
+.mb.me{align-self:flex-end;align-items:flex-end;}
+.mb.them{align-self:flex-start;align-items:flex-start;}
+.mb-sender{font-size:7px;letter-spacing:2px;color:var(--muted);margin-bottom:4px;font-weight:700;}
+.mb-text{padding:13px 18px;font-size:9px;letter-spacing:.8px;line-height:1.8;font-weight:600;}
+.me .mb-text{background:var(--black);color:#fff;}
+.them .mb-text{background:#fff;border:1px solid var(--border);color:var(--black);}
+.mb-time{font-size:7px;letter-spacing:1px;color:#ccc;margin-top:4px;font-weight:700;}
+.msg-bar{display:flex;border-top:1px solid var(--border);}
+.msg-field{flex:1;padding:16px 20px;background:#fff;border:none;font-size:9px;letter-spacing:1.5px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;color:var(--black);outline:none;}
+.msg-field::placeholder{color:#ccc;}
+.msg-go{width:60px;background:var(--black);border:none;cursor:pointer;color:#fff;font-size:15px;transition:opacity .2s;flex-shrink:0;}
+.msg-go:hover{opacity:.75;}
+@media(max-width:768px){.p-topbar{padding:16px 20px;}.p-tabs{padding:0 20px;}.ptab{padding:14px 16px;font-size:9px;}.ptab-body{padding:28px 20px;}}
+
+/* ── CHATBOT ─────────────────────────── */
+.chat-btn{position:fixed;bottom:28px;right:28px;z-index:500;width:56px;height:56px;background:var(--black);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 20px rgba(0,0,0,.18);transition:opacity .2s,transform .2s;}
+.chat-btn:hover{opacity:.85;transform:scale(1.06);}
+.chat-panel{position:fixed;bottom:96px;right:28px;z-index:500;width:340px;background:#fff;border:1px solid var(--border);box-shadow:0 8px 40px rgba(0,0,0,.12);display:none;flex-direction:column;max-height:480px;}
+.chat-panel.open{display:flex;}
+.chat-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--black);color:#fff;}
+.chat-head-title{font-size:10px;font-weight:900;letter-spacing:3px;}
+.chat-head-sub{font-size:7px;letter-spacing:2px;color:rgba(255,255,255,.5);margin-top:2px;font-weight:700;}
+.chat-close{background:none;border:none;color:#fff;cursor:pointer;font-size:18px;line-height:1;transition:opacity .2s;}
+.chat-close:hover{opacity:.6;}
+.chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--gray);}
+.chat-bubble{max-width:85%;display:flex;flex-direction:column;}
+.chat-bubble.bot{align-self:flex-start;}
+.chat-bubble.user{align-self:flex-end;align-items:flex-end;}
+.chat-btext{padding:10px 14px;font-size:9px;letter-spacing:.8px;line-height:1.8;font-weight:600;}
+.bot .chat-btext{background:#fff;border:1px solid var(--border);color:var(--black);}
+.user .chat-btext{background:var(--black);color:#fff;}
+.chat-btime{font-size:7px;letter-spacing:1px;color:#bbb;margin-top:3px;font-weight:700;}
+.chat-input-bar{display:flex;border-top:1px solid var(--border);}
+.chat-input{flex:1;padding:14px 16px;border:none;background:#fff;font-size:9px;letter-spacing:1px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;color:var(--black);outline:none;}
+.chat-input::placeholder{color:#ccc;}
+.chat-send{width:50px;background:var(--black);border:none;cursor:pointer;color:#fff;font-size:14px;transition:opacity .2s;}
+.chat-send:hover{opacity:.75;}
+@media(max-width:480px){.chat-panel{width:calc(100vw - 32px);right:16px;}.chat-btn{right:16px;}}
+
+/* ── FOOTER ──────────────────────────── */
+footer{background:var(--black);padding:64px 48px 36px;}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1);flex-wrap:wrap;gap:40px;}
+.foot-logo{font-size:13px;font-weight:900;letter-spacing:3px;color:#fff;margin-bottom:10px;}
+.foot-tagline{font-size:8px;letter-spacing:3px;color:rgba(255,255,255,.3);font-weight:700;}
+.foot-links{display:flex;gap:56px;flex-wrap:wrap;}
+.foot-col-t{font-size:8px;letter-spacing:3px;color:rgba(255,255,255,.3);font-weight:700;margin-bottom:18px;}
+.foot-col a{display:block;font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:12px;cursor:pointer;transition:color .2s,padding-left .25s;}
+.foot-col a:hover{color:#fff;padding-left:6px;}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:12px;}
+.foot-copy{font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.2);font-weight:700;}
+@media(max-width:768px){footer{padding:48px 24px 28px;}.foot-links{gap:32px;}}
+
+
+/* ── SERVICES ────────────────────────── */
+.services-hero{padding:88px 48px 64px;border-bottom:1px solid var(--border);}
+.services-h{font-size:clamp(48px,9vw,110px);font-weight:900;letter-spacing:-1px;line-height:.92;margin-bottom:0;}
+.services-lead{font-size:11px;letter-spacing:1.5px;line-height:2.2;color:var(--muted);font-weight:600;max-width:560px;margin-top:28px;}
+.services-list{border-top:1px solid var(--border);}
+.service-row{display:flex;align-items:center;justify-content:space-between;padding:36px 48px;border-bottom:1px solid var(--border);gap:40px;transition:background .2s,padding-left .3s cubic-bezier(.16,1,.3,1);cursor:default;}
+.service-row:hover{background:var(--gray);padding-left:64px;}
+.service-row-left{display:flex;align-items:center;gap:28px;}
+.service-num{font-size:11px;font-weight:900;letter-spacing:3px;color:var(--muted);min-width:36px;}
+.service-name{font-size:clamp(18px,2.8vw,32px);font-weight:900;letter-spacing:1px;}
+.service-tag{font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);background:var(--gray);padding:6px 16px;white-space:nowrap;}
+.service-row:hover .service-tag{background:var(--black);color:#fff;}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:var(--border);}
+.pricing-card{background:var(--white);padding:48px 40px;position:relative;transition:background .2s;}
+.pricing-card:hover{background:var(--gray);}
+.pricing-card.featured{background:var(--black);}
+.pricing-card.featured:hover{background:#1a1a1a;}
+.pricing-featured-badge{position:absolute;top:28px;right:28px;font-size:8px;font-weight:800;letter-spacing:2px;background:#fff;color:var(--black);padding:5px 14px;}
+.pricing-tag{font-size:8px;font-weight:800;letter-spacing:3px;color:var(--muted);margin-bottom:20px;}
+.pricing-card.featured .pricing-tag{color:rgba(255,255,255,.35);}
+.pricing-name{font-size:32px;font-weight:900;letter-spacing:1px;margin-bottom:8px;}
+.pricing-card.featured .pricing-name{color:#fff;}
+.pricing-price{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--muted);margin-bottom:32px;padding-bottom:28px;border-bottom:1px solid var(--border);}
+.pricing-card.featured .pricing-price{color:rgba(255,255,255,.35);border-bottom-color:rgba(255,255,255,.1);}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px;}
+.pricing-features li{font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--muted);display:flex;align-items:flex-start;gap:12px;line-height:1.7;}
+.pricing-card.featured .pricing-features li{color:rgba(255,255,255,.55);}
+.pricing-features li::before{content:'→';flex-shrink:0;color:var(--border);}
+.pricing-card.featured .pricing-features li::before{color:rgba(255,255,255,.2);}
+.pricing-cta{display:block;width:100%;padding:15px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .2s;border:1.5px solid var(--black);background:transparent;color:var(--black);}
+.pricing-cta:hover{background:var(--black);color:#fff;}
+.pricing-card.featured .pricing-cta{background:#fff;color:var(--black);border-color:#fff;}
+.pricing-card.featured .pricing-cta:hover{background:rgba(255,255,255,.85);}
+.faq{border-top:1px solid var(--border);}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:28px 48px;cursor:pointer;transition:background .2s;gap:20px;}
+.faq-q:hover{background:var(--gray);}
+.faq-q-text{font-size:11px;font-weight:800;letter-spacing:1.5px;}
+.faq-icon{font-size:18px;font-weight:300;color:var(--muted);flex-shrink:0;transition:transform .3s cubic-bezier(.16,1,.3,1);}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{font-size:10px;letter-spacing:1px;line-height:2.2;color:var(--muted);font-weight:600;padding:0 48px 28px;display:none;}
+.faq-item.open .faq-a{display:block;}
+@media(max-width:768px){
+  .services-hero{padding:56px 24px 40px;}
+  .service-row{padding:24px 24px;flex-direction:column;align-items:flex-start;gap:16px;}
+  .service-row:hover{padding-left:24px;}
+  .pricing{grid-template-columns:1fr;}
+  .faq-q{padding:20px 24px;}.faq-a{padding:0 24px 20px;}
+}
+
+.hidden{display:none!important;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="go('home')">Bryski Studios</div>
+  <div class="nav-links" id="navLinks">
+    <a onclick="go('home')" id="nl-home" class="on">Home</a>
+    <a onclick="go('about')" id="nl-about">About</a>
+    <a onclick="go('services')" id="nl-services">Services</a>
+    <a onclick="go('work')" id="nl-work">Our Work</a>
+    <a onclick="go('booking')" id="nl-booking">Book A Call</a>
+    <button class="nav-portal" onclick="go('portal')">Client Portal</button>
+  </div>
+  <button class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════ HOME ════════════════════════════════ -->
+<div class="page on" id="page-home">
+
+  <section class="hero">
+    <div class="hero-tag">Social Media &amp; Video Marketing Agency</div>
+    <h1 class="hero-h1">Bryski Studios</h1>
+    <h2 class="hero-h2">Get A Full Month Of Content In Just One Day</h2>
+    <p class="hero-p">Done-for-you monthly content system. Planned, filmed, edited, and scheduled — so you can focus on running your business.</p>
+    <div class="hero-btns">
+      <button class="btn-blk" onclick="go('booking')">Book A Free Call</button>
+      <button class="btn-wht" onclick="go('work')">See Our Work</button>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div>Scroll</div>
+  </section>
+
+  <div class="marquee-bar">
+    <div class="marquee-inner">
+      <span class="mi">Video Production</span><span class="md"></span>
+      <span class="mi">Social Media</span><span class="md"></span>
+      <span class="mi">Reels &amp; Shorts</span><span class="md"></span>
+      <span class="mi">Content Strategy</span><span class="md"></span>
+      <span class="mi">Ad Creative</span><span class="md"></span>
+      <span class="mi">Brand Storytelling</span><span class="md"></span>
+      <span class="mi">Video Production</span><span class="md"></span>
+      <span class="mi">Social Media</span><span class="md"></span>
+      <span class="mi">Reels &amp; Shorts</span><span class="md"></span>
+      <span class="mi">Content Strategy</span><span class="md"></span>
+      <span class="mi">Ad Creative</span><span class="md"></span>
+      <span class="mi">Brand Storytelling</span><span class="md"></span>
+    </div>
+  </div>
+
+  <div class="dfy">
+    <div class="dfy-left">
+      <div class="dfy-tag sr">How It Works</div>
+      <div class="dfy-h sr d1">Done-For-You Monthly Content System</div>
+      <div class="dfy-p sr d2">Planned, filmed, edited, and scheduled — so you can focus on running your business. We handle everything from start to post.</div>
+      <div class="dfy-steps">
+        <div class="dfy-step sr d2"><div class="dfy-step-num">01</div><div class="dfy-step-text">We plan your entire month of content in one strategy call</div></div>
+        <div class="dfy-step sr d3"><div class="dfy-step-num">02</div><div class="dfy-step-text">We film everything in a single content day at your location</div></div>
+        <div class="dfy-step sr d4"><div class="dfy-step-num">03</div><div class="dfy-step-text">We edit, caption, and schedule every post for the month</div></div>
+        <div class="dfy-step sr d5"><div class="dfy-step-num">04</div><div class="dfy-step-text">You review, approve, and stay focused on your business</div></div>
+      </div>
+    </div>
+    <div class="dfy-right">
+      <div class="dfy-r-tag sr">Why It Works</div>
+      <div class="dfy-r-h sr d1">Built For Busy Business Owners</div>
+      <div class="dfy-r-p sr d2">Most businesses fail online not because of bad products — but because of inconsistent content. We fix that permanently.</div>
+      <button class="btn-blk sr d3" onclick="go('booking')">Get Started</button>
+      <div class="dfy-stat-grid" style="margin-top:36px;">
+        <div class="dfy-stat sr d3"><div class="dfy-stat-n">50+</div><div class="dfy-stat-l">Clients Served</div></div>
+        <div class="dfy-stat sr d4"><div class="dfy-stat-n">300+</div><div class="dfy-stat-l">Videos Produced</div></div>
+        <div class="dfy-stat sr d4"><div class="dfy-stat-n">1 Day</div><div class="dfy-stat-l">To Film A Month</div></div>
+        <div class="dfy-stat sr d5"><div class="dfy-stat-n">5M+</div><div class="dfy-stat-l">Views Generated</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div class="sr">
+      <div class="cta-strip-h">Ready To Grow<br>Your Brand?</div>
+      <div class="cta-strip-sub">No contracts. No stress. Just results.</div>
+    </div>
+    <button class="btn-wht sr d2" onclick="go('booking')" style="flex-shrink:0;">Book A Free Call</button>
+  </div>
+
+</div>
+
+<!-- ════ ABOUT ═══════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="about-hero-inner">
+      <div class="about-eyebrow sr">Who We Are</div>
+      <div class="about-h sr d1">We Make Brands Impossible To Ignore</div>
+      <p class="about-lead sr d2">Bryski Studios is an Arizona content and video marketing agency helping local businesses show up consistently, grow their audience, and turn views into revenue.</p>
+    </div>
+  </div>
+  <div class="about-grid">
+    <div class="about-l">
+      <div class="sec-tag sr">Our Story</div>
+      <p class="about-body sr d1">Bryski Studios was built with one mission in mind: give every business — regardless of size — access to world-class content that actually drives growth.<br><br>We noticed that most small businesses in Arizona had incredible products and services but were completely invisible online. They didn't have the time to film, edit, and post — and they couldn't afford the overhead of a large agency.<br><br>So we built a system that changes that. In one single content day, we plan, film, and capture everything your business needs for an entire month of content. Our team then handles the editing, captions, scheduling, and strategy — so you never have to think about it again.<br><br>From restaurants to gyms across Arizona, we've helped dozens of Arizona businesses build a real online presence that attracts attention, builds trust, and drives customers through the door.</p>
+      <button class="btn-blk sr d2" onclick="go('booking')">Work With Us</button>
+    </div>
+    <div class="about-r">
+      <div class="sec-tag sr">Our Values</div>
+      <div class="about-vals">
+        <div class="about-val sr"><div class="about-val-t">Quality First</div><div class="about-val-p">Every frame we deliver is something we're proud to put our name on.</div></div>
+        <div class="about-val sr d1"><div class="about-val-t">Results Driven</div><div class="about-val-p">Pretty content that doesn't convert is just noise. We build for growth.</div></div>
+        <div class="about-val sr d2"><div class="about-val-t">Fast Delivery</div><div class="about-val-p">Your month's content, filmed in one day and delivered on time. Every time.</div></div>
+        <div class="about-val sr d3"><div class="about-val-t">Transparency</div><div class="about-val-p">No surprises. You're always in the loop from shoot day to scheduled post.</div></div>
+        <div class="about-val sr d4"><div class="about-val-t">Local Roots</div><div class="about-val-p">Arizona based. We know this market, these people, and these businesses.</div></div>
+        <div class="about-val sr d5"><div class="about-val-t">Long-Term Vision</div><div class="about-val-p">We're not here for a one-time shoot. We build systems that compound over time.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ OUR WORK ════════════════════════════ -->
+<div class="page" id="page-work">
+  <section class="section" style="padding-bottom:0;">
+    <div class="sec-tag sr">What We've Built</div>
+    <div class="sec-h sr d1">Our Work</div>
+  </section>
+  <div class="work-grid" style="padding:0 48px 48px;gap:3px;">
+    <div class="work-item wide sr-scale" style="background:#1C1C1C;">
+      <div class="work-bg" style="color:#fff;font-size:64px;">🍽️</div>
+      <div class="work-overlay"><div class="work-info"><div class="work-cat">Restaurant Client</div><div class="work-title">Full Brand Content System</div></div></div>
+    </div>
+    <div class="work-item sr-scale d1" style="background:#EBEBEB;">
+      <div class="work-bg">💪</div>
+      <div class="work-overlay"><div class="work-info"><div class="work-cat">Fitness Studio</div><div class="work-title">Monthly Reels Package</div></div></div>
+    </div>
+    <div class="work-item sr-scale d2" style="background:#2A2A2A;">
+      <div class="work-bg" style="color:#fff;">✂️</div>
+      <div class="work-overlay"><div class="work-info"><div class="work-cat">Barbershop</div><div class="work-title">Social Media Growth</div></div></div>
+    </div>
+    <div class="work-item sr-scale d3" style="background:#F0F0F0;">
+      <div class="work-bg">🏠</div>
+      <div class="work-overlay"><div class="work-info"><div class="work-cat">Real Estate</div><div class="work-title">Property Showcase Videos</div></div></div>
+    </div>
+    <div class="work-item wide sr-scale d1" style="background:#141414;">
+      <div class="work-bg" style="color:#fff;">🎬</div>
+      <div class="work-overlay"><div class="work-info"><div class="work-cat">Brand Campaign</div><div class="work-title">Ad Creative &amp; Launch Video</div></div></div>
+    </div>
+  </div>
+  <div class="cta-strip">
+    <div class="sr">
+      <div class="cta-strip-h">Want Results<br>Like These?</div>
+      <div class="cta-strip-sub">Let's build your content system.</div>
+    </div>
+    <button class="btn-wht sr d2" onclick="go('booking')" style="flex-shrink:0;">Book A Free Call</button>
+  </div>
+</div>
+
+<!-- ════ BOOKING ═════════════════════════════ -->
+<div class="page" id="page-booking">
+  <div class="booking-hero">
+    <div class="booking-h sr">Book A Free Call</div>
+    <p class="booking-sub sr d1">Pick a package, fill in your details, and we'll reach out within 24 hours to schedule your strategy call.</p>
+    <div class="booking-options">
+      <div class="booking-card selected sr" onclick="selectPlan(this,'Starter')">
+        <div class="booking-plan">Package 01</div>
+        <div class="booking-name">Starter</div>
+        <div class="booking-price">Custom</div>
+        <div class="booking-price-sub">Pricing Based On Scope</div>
+        <ul class="booking-features">
+          <li>8 Short-Form Videos / Month</li>
+          <li>Strategy &amp; Planning Session</li>
+          <li>One Content Shoot Day</li>
+          <li>Captions &amp; Hashtags Included</li>
+        </ul>
+      </div>
+      <div class="booking-card sr d1" onclick="selectPlan(this,'Growth')">
+        <div class="booking-plan">Package 02</div>
+        <div class="booking-name">Growth</div>
+        <div class="booking-price">Custom</div>
+        <div class="booking-price-sub">Pricing Based On Scope</div>
+        <ul class="booking-features">
+          <li>16 Short-Form Videos / Month</li>
+          <li>Full Content Strategy</li>
+          <li>One Full Shoot Day</li>
+          <li>Scheduling &amp; Posting</li>
+          <li>Monthly Performance Report</li>
+        </ul>
+      </div>
+      <div class="booking-card sr d2" onclick="selectPlan(this,'Brand')">
+        <div class="booking-plan">Package 03</div>
+        <div class="booking-name">Brand</div>
+        <div class="booking-price">Custom</div>
+        <div class="booking-price-sub">Pricing Based On Scope</div>
+        <ul class="booking-features">
+          <li>20+ Videos / Month</li>
+          <li>Full Social Management</li>
+          <li>Ad Creative Included</li>
+          <li>Priority Turnaround</li>
+          <li>Dedicated Account Manager</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="booking-form-wrap">
+    <div class="booking-form-h sr">Your Details</div>
+    <div class="bform">
+      <div class="form-group sr d1"><label class="field-label">First Name</label><input class="field-input" id="bFirst" placeholder="First Name"/></div>
+      <div class="form-group sr d1"><label class="field-label">Last Name</label><input class="field-input" id="bLast" placeholder="Last Name"/></div>
+      <div class="form-group sr d2"><label class="field-label">Email Address</label><input class="field-input" id="bEmail" placeholder="email@company.com"/></div>
+      <div class="form-group sr d2"><label class="field-label">Phone Number</label><input class="field-input" id="bPhone" placeholder="(555) 000-0000"/></div>
+      <div class="form-group bform-full sr d3"><label class="field-label">Business Name</label><input class="field-input" id="bBiz" placeholder="Your Business Name"/></div>
+      <div class="form-group bform-full sr d4"><label class="field-label">Tell Us About Your Goals</label><textarea class="field-input" id="bMsg" placeholder="What are you looking to achieve? What's your biggest content challenge?"></textarea></div>
+      <div class="bform-full sr d5">
+        <button class="bform-submit" onclick="submitBooking()">Request My Free Call</button>
+        <div class="bform-ok" id="bOk"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ PORTAL ══════════════════════════════ -->
+<div class="page" id="page-portal">
+  <div class="portal-login" id="pLogin">
+    <div class="p-brand">Bryski Studios</div>
+    <div class="p-sub">Client Portal</div>
+    <div class="p-rule"></div>
+    <div class="p-box">
+      <label class="p-label">Your Access Code</label>
+      <input class="p-code" id="pCodeInput" maxlength="6" placeholder="······"/>
+      <button class="p-go" onclick="pLogin()">Enter Portal</button>
+      <div class="p-err" id="pErrMsg"></div>
+    </div>
+  </div>
+  <div class="p-dash" id="pDash">
+    <div class="p-topbar">
+      <div class="p-topbar-logo">Bryski Studios</div>
+      <div class="p-topbar-r">
+        <div class="p-client" id="pClientName"></div>
+        <button class="p-out" onclick="pLogout()">Sign Out</button>
+      </div>
+    </div>
+    <div class="p-tabs">
+      <button class="ptab on" onclick="pTab('upload',this)">Upload</button>
+      <button class="ptab" onclick="pTab('delivered',this)">Delivered</button>
+      <button class="ptab" onclick="pTab('messages',this)">Messages <span class="ptab-badge" id="pNotifBadge">2</span></button>
+    </div>
+    <div class="ptab-body on" id="ptab-upload">
+      <div class="ptab-eyebrow">Step 01</div>
+      <div class="ptab-title">Upload Raw Footage</div>
+      <div class="drop-zone">
+        <input type="file" multiple accept="video/*,image/*" onchange="pHandleFiles(event)"/>
+        <span class="dz-icon">🎬</span>
+        <div class="dz-main">Choose Files Or Drag &amp; Drop</div>
+        <div class="dz-sub">MP4 · MOV · AVI · Up To 4GB Per File</div>
+      </div>
+      <div class="f-list" id="pFileList"></div>
+      <button class="p-btn hidden" id="pSendBtn" onclick="pSendFiles()">Send To Bryski Studios</button>
+      <div class="p-ok" id="pOkMsg"></div>
+    </div>
+    <div class="ptab-body" id="ptab-delivered">
+      <div class="ptab-eyebrow">Ready For You</div>
+      <div class="ptab-title">Finished Videos</div>
+      <div class="d-list" id="pDeliveredList">
+        <div style="font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:700;padding:32px 0;text-align:center;">No videos delivered yet — check back soon.</div>
+      </div>
+    </div>
+    <div class="ptab-body" id="ptab-messages">
+      <div class="ptab-eyebrow">Direct Line</div>
+      <div class="ptab-title">Messages</div>
+      <div class="msg-wrap">
+        <div class="msg-thread" id="pMsgThread">
+          <div class="mb them">
+            <div class="mb-sender">Bryski Studios</div>
+            <div class="mb-text">Welcome to your Bryski Studios portal! Upload your raw footage in the Upload tab and we'll get started. 🎬</div>
+            <div class="mb-time">Just Now</div>
+          </div>
+        </div>
+        <div class="msg-bar">
+          <input class="msg-field" id="pMsgInput" placeholder="Message Bryski Studios..." onkeydown="if(event.key==='Enter')pSendMsg()"/>
+          <button class="msg-go" onclick="pSendMsg()">➤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════ SERVICES ════════════════════════════ -->
+<div class="page" id="page-services">
+
+  <div class="services-hero">
+    <div class="about-eyebrow sr">What We Offer</div>
+    <div class="services-h sr d1">Services</div>
+    <p class="services-lead sr d2">Everything your brand needs to show up consistently online — planned, filmed, edited, and scheduled. Done for you every single month.</p>
+  </div>
+
+  <div class="services-list">
+    <div class="service-row sr">
+      <div class="service-row-left">
+        <span class="service-num">01</span>
+        <span class="service-name">Video Production</span>
+      </div>
+      <span class="service-tag">Most Popular</span>
+    </div>
+    <div class="service-row sr d1">
+      <div class="service-row-left">
+        <span class="service-num">02</span>
+        <span class="service-name">Social Media Management</span>
+      </div>
+      <span class="service-tag">Full Service</span>
+    </div>
+    <div class="service-row sr d2">
+      <div class="service-row-left">
+        <span class="service-num">03</span>
+        <span class="service-name">Reels & Short Form Content</span>
+      </div>
+      <span class="service-tag">High ROI</span>
+    </div>
+    <div class="service-row sr d3">
+      <div class="service-row-left">
+        <span class="service-num">04</span>
+        <span class="service-name">Ad Creative & Paid Content</span>
+      </div>
+      <span class="service-tag">Converts</span>
+    </div>
+    <div class="service-row sr d4">
+      <div class="service-row-left">
+        <span class="service-num">05</span>
+        <span class="service-name">Content Strategy & Planning</span>
+      </div>
+      <span class="service-tag">Growth</span>
+    </div>
+    <div class="service-row sr d5">
+      <div class="service-row-left">
+        <span class="service-num">06</span>
+        <span class="service-name">Brand Identity & Storytelling</span>
+      </div>
+      <span class="service-tag">Foundation</span>
+    </div>
+  </div>
+
+  <section class="section" style="padding-bottom:0;">
+    <div class="sec-tag sr">Transparent Pricing</div>
+    <div class="sec-h sr d1">Pick Your Plan</div>
+  </section>
+
+  <div class="pricing">
+    <div class="pricing-card sr">
+      <div class="pricing-tag">Package 01</div>
+      <div class="pricing-name">Starter</div>
+      <div class="pricing-price">Custom Pricing — Based On Scope</div>
+      <ul class="pricing-features">
+        <li>8 Short-Form Videos / Month</li>
+        <li>Strategy & Planning Session</li>
+        <li>One Content Shoot Day</li>
+        <li>Captions & Hashtags Included</li>
+        <li>2 Rounds Of Revisions</li>
+      </ul>
+      <button class="pricing-cta" onclick="go('booking')">Get Started</button>
+    </div>
+    <div class="pricing-card featured sr d1">
+      <div class="pricing-featured-badge">Most Popular</div>
+      <div class="pricing-tag">Package 02</div>
+      <div class="pricing-name">Growth</div>
+      <div class="pricing-price">Custom Pricing — Based On Scope</div>
+      <ul class="pricing-features">
+        <li>16 Short-Form Videos / Month</li>
+        <li>Full Content Strategy</li>
+        <li>One Full Shoot Day</li>
+        <li>Scheduling & Posting Included</li>
+        <li>Monthly Performance Report</li>
+        <li>Priority Communication</li>
+      </ul>
+      <button class="pricing-cta" onclick="go('booking')">Get Started</button>
+    </div>
+    <div class="pricing-card sr d2">
+      <div class="pricing-tag">Package 03</div>
+      <div class="pricing-name">Brand</div>
+      <div class="pricing-price">Custom Pricing — Based On Scope</div>
+      <ul class="pricing-features">
+        <li>20+ Videos / Month</li>
+        <li>Full Social Management</li>
+        <li>Ad Creative Included</li>
+        <li>Priority Turnaround</li>
+        <li>Dedicated Account Manager</li>
+        <li>Quarterly Strategy Review</li>
+      </ul>
+      <button class="pricing-cta" onclick="go('booking')">Get Started</button>
+    </div>
+  </div>
+
+  <section class="section" style="padding-bottom:0;">
+    <div class="sec-tag sr">Got Questions</div>
+    <div class="sec-h sr d1">FAQ</div>
+  </section>
+
+  <div class="faq">
+    <div class="faq-item sr">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">How Does The One-Day Shoot Work?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">We come to your location with our full setup — camera, lighting, audio — and in one single day we capture everything your brand needs for an entire month of content. It's efficient, professional, and requires minimal time from you.</div>
+    </div>
+    <div class="faq-item sr d1">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">How Long Until I See My Videos?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">After your shoot day, we deliver your edited videos within 5–7 business days. You'll review everything in your client portal and request any revisions before we schedule posts.</div>
+    </div>
+    <div class="faq-item sr d2">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Do You Lock Me Into A Contract?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">No long-term contracts. We work on monthly agreements and earn your business every single month. If you're not happy, you're not stuck.</div>
+    </div>
+    <div class="faq-item sr d3">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">What Kind Of Businesses Do You Work With?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Restaurants, gyms, barbershops, real estate agents, retail brands, med spas, law firms — any service or product business in Arizona that wants to grow their presence online.</div>
+    </div>
+    <div class="faq-item sr d4">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Do I Need To Be On Camera?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Not necessarily. We can build great content around your space, product, team, and brand without requiring you to be on camera — though we find that founder-led content tends to perform best.</div>
+    </div>
+    <div class="faq-item sr d5">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">How Do I Get Started?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Click "Book A Free Call", fill out the form, and we'll reach out within 24 hours to schedule your strategy session. No commitment, no pressure — just a conversation about your goals.</div>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div class="sr">
+      <div class="cta-strip-h">Not Sure Which<br>Package Is Right?</div>
+      <div class="cta-strip-sub">Book a free call and we'll figure it out together.</div>
+    </div>
+    <button class="btn-wht sr d2" onclick="go('booking')" style="flex-shrink:0;">Book A Free Call</button>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer id="siteFooter">
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo">Bryski Studios</div>
+      <div class="foot-tagline">Social Media &amp; Video Marketing — Arizona</div>
+    </div>
+    <div class="foot-links">
+      <div class="foot-col">
+        <div class="foot-col-t">Navigate</div>
+        <a onclick="go('home')">Home</a>
+        <a onclick="go('about')">About</a>
+        <a onclick="go('services')">Services</a>
+        <a onclick="go('work')">Our Work</a>
+        <a onclick="go('booking')">Book A Call</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-t">Connect</div>
+        <a href="https://instagram.com/bryskistudios" target="_blank">Instagram</a>
+        <a href="https://tiktok.com/@bryskistudios" target="_blank">TikTok</a>
+        <a onclick="go('portal')">Client Portal</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2026 Bryski Studios. All Rights Reserved.</div>
+    <div class="foot-copy">Arizona</div>
+  </div>
+</footer>
+
+<!-- CHATBOT -->
+<button class="chat-btn" onclick="toggleChat()" title="Chat with us">💬</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <div>
+      <div class="chat-head-title">Bryski Studios</div>
+      <div class="chat-head-sub">Typically replies in minutes</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-bubble bot">
+      <div class="chat-btext">Hey! 👋 Welcome to Bryski Studios. What can I help you with?</div>
+      <div class="chat-btime">Just Now</div>
+    </div>
+    <div class="chat-bubble bot">
+      <div class="chat-btext" style="display:flex;flex-direction:column;gap:8px;">
+        <span>Quick questions:</span>
+        <button onclick="chatQ('What services do you offer?')" style="background:#fff;border:1px solid var(--border);padding:8px 12px;font-family:Montserrat,sans-serif;font-size:8px;letter-spacing:1px;text-transform:uppercase;font-weight:700;cursor:pointer;text-align:left;transition:background .2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='#fff'">What services do you offer?</button>
+        <button onclick="chatQ('How much does it cost?')" style="background:#fff;border:1px solid var(--border);padding:8px 12px;font-family:Montserrat,sans-serif;font-size:8px;letter-spacing:1px;text-transform:uppercase;font-weight:700;cursor:pointer;text-align:left;transition:background .2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='#fff'">How much does it cost?</button>
+        <button onclick="chatQ('How do I get started?')" style="background:#fff;border:1px solid var(--border);padding:8px 12px;font-family:Montserrat,sans-serif;font-size:8px;letter-spacing:1px;text-transform:uppercase;font-weight:700;cursor:pointer;text-align:left;transition:background .2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='#fff'">How do I get started?</button>
+      </div>
+    </div>
+  </div>
+  <div class="chat-input-bar">
+    <input class="chat-input" id="chatInput" placeholder="Ask us anything..." onkeydown="if(event.key==='Enter')sendChat()"/>
+    <button class="chat-send" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+<script>
+// ── NAVIGATION
+const pages=['home','about','work','services','booking','portal'];
+const navIds=['home','about','work','services','booking'];
+function go(name){
+  pages.forEach(p=>document.getElementById('page-'+p).classList.remove('on'));
+  navIds.forEach(n=>{const el=document.getElementById('nl-'+n);if(el)el.classList.remove('on');});
+  document.getElementById('page-'+name).classList.add('on');
+  const nl=document.getElementById('nl-'+name);if(nl)nl.classList.add('on');
+  window.scrollTo(0,0);
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('siteFooter').style.display=name==='portal'?'none':'block';
+  setTimeout(initSR,80);
+}
+
+// ── SCROLL REVEAL
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:0.05,rootMargin:'0px 0px -16px 0px'});
+function initSR(){
+  document.querySelectorAll('.sr,.sr-left,.sr-right,.sr-scale').forEach(el=>{
+    el.classList.remove('visible');
+    observer.observe(el);
+  });
+}
+setTimeout(initSR,120);
+
+// ── BOOKING
+let selectedPlan='Starter';
+function selectPlan(el,plan){
+  document.querySelectorAll('.booking-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');selectedPlan=plan;
+}
+function submitBooking(){
+  const first=document.getElementById('bFirst').value.trim();
+  const email=document.getElementById('bEmail').value.trim();
+  if(!first||!email){document.getElementById('bOk').textContent='Please fill in your name and email.';return;}
+  document.getElementById('bOk').textContent='Request received! We\'ll be in touch within 24 hours.';
+  ['bFirst','bLast','bEmail','bPhone','bBiz','bMsg'].forEach(id=>document.getElementById(id).value='');
+}
+
+// ── PORTAL
+// ════════════════════════════════════════════════
+// ADD YOUR CLIENTS HERE — format: 'CODE':'Client Name'
+const CLIENTS={
+  // Add client codes below this line:
+
+};
+// ════════════════════════════════════════════════
+let pFiles=[];
+function pLogin(){
+  const code=document.getElementById('pCodeInput').value.toUpperCase().trim();
+  if(CLIENTS[code]){
+    document.getElementById('pLogin').style.display='none';
+    document.getElementById('pDash').style.display='block';
+    document.getElementById('pClientName').textContent=CLIENTS[code];
+    document.getElementById('pErrMsg').textContent='';
+  }else{document.getElementById('pErrMsg').textContent='Invalid code. Please check with Bryski Studios.';}
+}
+function pLogout(){
+  document.getElementById('pLogin').style.display='flex';
+  document.getElementById('pDash').style.display='none';
+  document.getElementById('pCodeInput').value='';
+  document.getElementById('pFileList').innerHTML='';
+  document.getElementById('pSendBtn').classList.add('hidden');
+  document.getElementById('pOkMsg').textContent='';
+  pFiles=[];
+}
+document.getElementById('pCodeInput').addEventListener('keydown',e=>{if(e.key==='Enter')pLogin();});
+function pTab(name,btn){
+  document.querySelectorAll('.ptab-body').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('ptab-'+name).classList.add('on');btn.classList.add('on');
+  if(name==='messages'){const n=document.getElementById('pNotifBadge');if(n)n.style.display='none';}
+}
+function pHandleFiles(e){
+  pFiles=Array.from(e.target.files);
+  document.getElementById('pOkMsg').textContent='';
+  document.getElementById('pFileList').innerHTML=pFiles.map(f=>`
+    <div class="f-row"><div class="f-dot fp"></div><div class="f-name">${f.name}</div><div class="f-size">${(f.size/1024/1024).toFixed(1)} MB</div></div>`).join('');
+  document.getElementById('pSendBtn').classList.remove('hidden');
+}
+function pSendFiles(){
+  const btn=document.getElementById('pSendBtn');
+  btn.textContent='Sending...';btn.disabled=true;
+  setTimeout(()=>{
+    document.getElementById('pFileList').innerHTML=pFiles.map(f=>`
+      <div class="f-row"><div class="f-dot fs"></div><div class="f-name">${f.name}</div><div class="f-size" style="color:#0D0D0D;font-weight:800;">Sent ✓</div></div>`).join('');
+    btn.classList.add('hidden');btn.disabled=false;btn.textContent='Send To Bryski Studios';
+    document.getElementById('pOkMsg').textContent='Received — Bryski Studios will be in touch shortly.';
+    pFiles=[];
+  },1500);
+}
+function pSendMsg(){
+  const f=document.getElementById('pMsgInput');
+  const t=f.value.trim();if(!t)return;
+  const th=document.getElementById('pMsgThread');
+  const time=new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+  th.innerHTML+=`<div class="mb me"><div class="mb-text">${t}</div><div class="mb-time">Now ${time}</div></div>`;
+  f.value='';th.scrollTop=th.scrollHeight;
+  setTimeout(()=>{
+    th.innerHTML+=`<div class="mb them"><div class="mb-sender">Bryski Studios</div><div class="mb-text">Got it — we'll follow up shortly.</div><div class="mb-time">Just Now</div></div>`;
+    th.scrollTop=th.scrollHeight;
+  },1200);
+}
+
+// ── CHATBOT
+const chatResponses={
+  'services':'We offer done-for-you monthly content systems including video production, social media management, reels & short-form content, ad creative, and content strategy. All planned, filmed, edited, and scheduled for you.',
+  'cost':'Pricing is custom based on your scope and goals. Book a free call and we\'ll put together a package that works for your business.',
+  'started':'Easy! Just click "Book A Free Call" and fill out the form. We\'ll reach out within 24 hours to schedule your strategy call.',
+  'located':'We\'re based in Arizona.',
+  'long':'We film your entire month of content in a single shoot day, then deliver edited videos within 5–7 business days.',
+  'contracts':'We work on monthly agreements with no long-term lock-in. We earn your business every single month.',
+  'businesses':'We work with restaurants, gyms, barbershops, real estate agents, retail brands, and any service business that wants to grow on social media.',
+};
+function toggleChat(){document.getElementById('chatPanel').classList.toggle('open');}
+function chatQ(q){addChatMsg(q,'user');setTimeout(()=>handleChatReply(q),700);}
+function sendChat(){
+  const inp=document.getElementById('chatInput');
+  const msg=inp.value.trim();if(!msg)return;
+  addChatMsg(msg,'user');inp.value='';
+  setTimeout(()=>handleChatReply(msg),800);
+}
+function addChatMsg(text,role){
+  const thread=document.getElementById('chatMessages');
+  const time=new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+  thread.innerHTML+=`<div class="chat-bubble ${role}"><div class="chat-btext">${text}</div><div class="chat-btime">${time}</div></div>`;
+  thread.scrollTop=thread.scrollHeight;
+}
+function handleChatReply(msg){
+  const lower=msg.toLowerCase();
+  let reply='Great question! Book a free call and we\'ll give you all the details. Click "Book A Free Call" in the nav above.';
+  for(const key in chatResponses){if(lower.includes(key)){reply=chatResponses[key];break;}}
+  addChatMsg(reply,'bot');
+}
+
+
+// ── FAQ
+function toggleFaq(el){
+  const item=el.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+go('home');
+</script>
+</body>
+</html>
